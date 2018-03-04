@@ -22,4 +22,5 @@ public interface EmployeeService {
 	
 	boolean isEmployeeEmailUnique(Integer id, String email);
 
+	Employee loginEmployeeByUserName(String username);
 }

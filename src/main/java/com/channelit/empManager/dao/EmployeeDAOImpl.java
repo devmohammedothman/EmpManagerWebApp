@@ -57,5 +57,15 @@ public class EmployeeDAOImpl extends AbstractDAO<Integer, Employee> implements E
 		
 		return (Employee) criteria.uniqueResult();
 	}
+	
+	@Override
+	public Employee loginEmployeeByUserName(String username) {
+		// TODO Auto-generated method stub
+		
+		Criteria criteria = createEntityCriteria();
+		criteria.add(Restrictions.eq("username", username));
+		
+		return (Employee) criteria.uniqueResult();
+	}
 
 }

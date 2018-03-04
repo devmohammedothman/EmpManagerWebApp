@@ -69,5 +69,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		return employeeDao.loginEmployee(username, password);
 	}
+	
+	@Override
+	public Employee loginEmployeeByUserName(String username) {
+		// TODO Auto-generated method stub
+		
+		return employeeDao.loginEmployeeByUserName(username);
+	}
 
 }

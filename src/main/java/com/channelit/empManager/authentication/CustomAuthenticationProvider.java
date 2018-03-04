@@ -14,6 +14,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import com.channelit.empManager.model.Employee;
+import com.channelit.empManager.model.EmployeeUserDetail;
 import com.channelit.empManager.service.EmployeeService;
 
 @Component
@@ -28,13 +30,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider
 		
 		String userName = authentication.getName();
 		String password = authentication.getCredentials().toString();
-		
-		if(authorizedUser(userName, password))
+		Employee emp = authorizedUser(userName, password);
+		if(emp != null)
 		{
 			List<GrantedAuthority> grantedAuths = new ArrayList<>();
 			grantedAuths.add(()-> {return "AUTH_USER";});
 			//grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
-			Authentication auth = new UsernamePasswordAuthenticationToken(userName, password, grantedAuths);
+			EmployeeUserDetail empUserDetail = new EmployeeUserDetail(emp);
+			empUserDetail.setAuthorities(grantedAuths);
+			
+			Authentication auth = new UsernamePasswordAuthenticationToken(empUserDetail, password, grantedAuths);
 			System.out.println(auth.getAuthorities());
 			return auth;
 		}
@@ -44,15 +49,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider
 		}
 	}
 	
-	private boolean authorizedUser(String userName,String password)
+	private Employee authorizedUser(String userName,String password)
 	{
 		System.out.println("username is :" + userName+" and password is "+password );
 		if(!StringUtils.isEmpty(userName) && !StringUtils.isEmpty(password))
 		{
-			if(loginService.loginEmployee(userName, password) != null)
-				return true;
+			Employee emp = loginService.loginEmployee(userName, password);
+			if( emp != null)
+				return emp;
 		}
-		return false;
+		return null;
 	}
 
 	@Override

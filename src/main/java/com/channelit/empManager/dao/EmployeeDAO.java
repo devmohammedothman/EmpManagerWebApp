@@ -13,4 +13,6 @@ public interface EmployeeDAO {
 	List<Employee> findAllEmployees();
 	Employee findEmployeeByEmail(String Email);
 	Employee loginEmployee(String username,String password);
+	
+	Employee loginEmployeeByUserName(String username);
 }

@@ -21,7 +21,7 @@
 		<sec:intercept-url pattern="/resources/**" access="permitAll" />
 		
 		 <sec:form-login login-page="/login"
-			login-processing-url="/authenticateUser" default-target-url="/index"
+			login-processing-url="/authenticateUser" default-target-url="/attendancelogs"
 			authentication-failure-url="/login" 
 			username-parameter="username" password-parameter="password" />
 			 

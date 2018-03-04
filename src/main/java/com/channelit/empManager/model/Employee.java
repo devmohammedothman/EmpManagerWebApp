@@ -1,5 +1,6 @@
 package com.channelit.empManager.model;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -86,7 +87,7 @@ public class Employee {
 	@Column (name = "deptid")
 	private int deptid;
 	
-	@Column (name = "empid" , nullable = false)
+	@Column (name = "empid" , nullable = false,unique=true)
 	@Min(value =1,message = "Employee Id must be greater than or equal to 1")
 	private int empid;
 	
