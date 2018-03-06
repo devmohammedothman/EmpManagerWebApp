@@ -12,5 +12,6 @@ CREATE TABLE `Employee` (
   `empid` int(11) NOT NULL,
   `active` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `empid_UNIQUE` (`empid`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;

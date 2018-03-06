@@ -37,7 +37,7 @@ private static final Logger logger = Logger.getLogger(EmployeeController.class);
 	
 	private static int _totalWorkingHours = 0;
 	//private static int _totalOverTimeHours = 0;
-	//private static final int totalHoursPerMonth = 160; 
+	//private static final int totalHoursPerMonth = 160w; 
 	
 	@RequestMapping (value = {"/registeration"} , method = RequestMethod.GET)
 	public String goRegisteration(ModelMap model)

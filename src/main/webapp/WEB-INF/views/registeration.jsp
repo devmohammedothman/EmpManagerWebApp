@@ -118,7 +118,7 @@
 						<div class="input-group input-sm">
 							<label class="input-group-addon" for="active">Is Employee Active ?
 							</label>
-							<sf:checkbox path="active"  id="empid" checked="checked"/>
+							<sf:checkbox path="active"  id="empid" disabled="true" checked="checked"/>
 						</div>
 						
 						<div class="form-actions">

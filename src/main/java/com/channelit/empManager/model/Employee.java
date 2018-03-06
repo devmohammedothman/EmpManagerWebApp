@@ -1,16 +1,11 @@
 package com.channelit.empManager.model;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -26,7 +21,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table (name = "Employee" ,
-uniqueConstraints = @UniqueConstraint(columnNames = {"username"}))
+uniqueConstraints = @UniqueConstraint(columnNames = {"username","empid"}))
 public class Employee {
 	
 	@Id
@@ -53,7 +48,7 @@ public class Employee {
 	
 	@NotNull
 	@Size (min = 3 , max = 50)
-	@Column (name = "username" , nullable = false)
+	@Column (name = "username" , nullable = false,unique=true)
 	@NotEmpty (message = "Please Enter User Name")
 	private String username;
 	
@@ -88,8 +83,9 @@ public class Employee {
 	private int deptid;
 	
 	@Column (name = "empid" , nullable = false,unique=true)
-	@Min(value =1,message = "Employee Id must be greater than or equal to 1")
-	private int empid;
+	@NotNull
+	@Min(value =1)
+	private Integer empid;
 	
 	@Column (name = "active")
 	private boolean active = true;
@@ -178,11 +174,11 @@ public class Employee {
 		this.deptid = deptid;
 	}
 
-	public int getEmpid() {
+	public Integer getEmpid() {
 		return empid;
 	}
 
-	public void setEmpid(int empid) {
+	public void setEmpid(Integer empid) {
 		this.empid = empid;
 	}
 

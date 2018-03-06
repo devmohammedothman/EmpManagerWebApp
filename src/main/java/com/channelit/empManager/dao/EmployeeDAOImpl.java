@@ -54,7 +54,7 @@ public class EmployeeDAOImpl extends AbstractDAO<Integer, Employee> implements E
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.eq("username", username));
 		criteria.add(Restrictions.eq("password", password));
-		
+		criteria.add(Restrictions.eq("active", true));
 		return (Employee) criteria.uniqueResult();
 	}
 	
